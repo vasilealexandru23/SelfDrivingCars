@@ -70,3 +70,13 @@ plt.plot(X, model.predict(X), color='blue')
 plt.show()
 
 print(theta)
+
+
+# Sources : https://www.youtube.com/watch?v=XhSk_Lw2X_U
+# The idea is that P0 would be (A.TA)^-1. If there is a new entry,
+# than P1 will be (A.TA + vv.T)^-1, so it makes sense of the recurssion
+# formulas of P and K (the gaining part). Then theta is updated via
+# the same "Sherman-Morrison-Woodbury" formula. To do it more rigorously,
+# after getting the formula for x_k+1 with P0, and new P1, by finding
+# the formula for x_k+2 we can see the P1 was right to compute and
+# everything is consistent (Mathematical Induction).
