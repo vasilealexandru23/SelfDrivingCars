@@ -11,5 +11,9 @@
 * Read more about Efficient Map Representation : https://ieeexplore.ieee.org/abstract/document/6856487
 * Read more about Dynamic Model : https://www.damtp.cam.ac.uk/user/tong/dynamics/clas.pdf and https://publications.lib.chalmers.se/records/fulltext/244369/244369.pdf
 * Read more about Longitudinal Vehicle Dynamics : https://link.springer.com/chapter/10.1007/978-1-4614-1433-9_4
-* Read more about Lateral Vehicle Dynamics : 
-* Read more about 
+* Read more about IMU : https://stanford.edu/class/ee267/lectures/lecture9.pdf
+
+
+**TODO** 
+* More robust lane detection + steering angle estimate
+* Start interaction with dynamic objects -> Reinforcement Learning ?
