@@ -110,14 +110,17 @@ def get_road_segment(left_lane, right_lane, spline_left, spline_right, len_sq_ro
     x_left, y_left = left_lane[left_lane.shape[0] // 2 - 120, 0]
 
     # Search in the right_lane points for the point that minimizez the distance with the len_sq_road
-    threshold = 25000
-    x_right, y_right = 0, 0
+    x_right_best, y_right_best = 0, 0
+    best_error = int(1e9)
     for i in range(right_lane.shape[0]):
         x_right, y_right = right_lane[i, 0]
-        if np.abs((x_left - x_right)**2 + (y_left - y_right)**2 - len_sq_road) < threshold:
-            break
+        if np.abs((x_left - x_right)**2 + (y_left - y_right)**2 - len_sq_road) < best_error:
+            x_right_best = x_right
+            y_right_best = y_right
+            best_error = np.abs((x_left - x_right)**2 + (y_left - y_right)**2 - len_sq_road)
 
-    return np.arctan2((y_right - y_left), (x_right - x_left)), np.array([[x_left, y_left], [x_right, y_right]])
+    print(f"Best error: {best_error}")
+    return np.arctan2((y_right_best - y_left), (x_right_best - x_left)), np.array([[x_left, y_left], [x_right_best, y_right_best]])
 
 def lane_detecton_pipeline(image):
     # Convert to grayscale and apply Canny edge detection
@@ -140,7 +143,7 @@ def lane_detecton_pipeline(image):
     points_right = points_right + np.array([4 * image.shape[1] // 5, 2 * image.shape[0] // 5])
 
     # Draw the lane lines on the image
-    # edges = cv2.cvtColor(edges, cv2.COLOR_GRAY2RGB)
+    image = cv2.cvtColor(edges, cv2.COLOR_GRAY2RGB)
     image = cv2.polylines(image, [points_left], isClosed=False, color=(0, 255, 0), thickness=10)
     image = cv2.polylines(image, [points_right], isClosed=False, color=(0, 255, 0), thickness=10)
 
@@ -173,7 +176,7 @@ def get_car_front_line(image):
 
 model = YOLO('yolov8n.pt')
 
-video = cv2.VideoCapture("test.mp4")
+video = cv2.VideoCapture("input.mp4")
 
 while True:
     success, frame = video.read()
