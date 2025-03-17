@@ -150,5 +150,4 @@ TODO: 1) Define the data structure where to keep the IMU/GNSS/LiDAR data.
 Questions:
     1) Keep all the data or just the prev step ?
     2) How should our structure be sent ? {data, timestamp}
-
 """
