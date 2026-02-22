@@ -90,3 +90,5 @@ and change the car's input(speed, steering angle).
 * Read more about Longitudinal Vehicle Dynamics : https://link.springer.com/chapter/10.1007/978-1-4614-1433-9_4
 * Read more about IMU : https://stanford.edu/class/ee267/lectures/lecture9.pdf
 * Read more about Dyamic window approach to collision avoidane : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=580977
+
+![](./img.png)
